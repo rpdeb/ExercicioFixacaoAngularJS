@@ -1,24 +1,23 @@
-angular.module("crud", []);
-angular.module("crud").controller("controller", function ($scope, $http) {
+angular.module("pessoa", []);
+angular.module("pessoa").controller("pessoaController", function ($scope, $http) {
 
     $scope.novaPessoa = {};
     $scope.pessoaSelecionado = {};
     $scope.pessoas = [];
     $scope.novaPessoa.codigo = Math.floor(Math.random() * 1000);
 
-    var listarPessoas = function () {
-        $http.get("http://localhost:3000/pessoas").success(function (data) {
+    var carregarPessoas = function () {
+        pessoasAPI.buscar().success(function (data) {
             $scope.pessoas = data;
         });
     };
 
-    $scope.salvar = function () {
-        $scope.pessoas.push($scope.novaPessoa);
+    $scope.adicionarPessoa = function () {
         var pessoa = $scope.novaPessoa;
-        $http.post("http://localhost:3000/pessoas", pessoa).success(function (data) {	
-        listarPessoas();
+        pessoa.nascimento = new Date();
+        pessoasAPI.adicionar(pessoa).success(function (data) {	
+        carregarPessoas();
 		});
-        //$scope.novaPessoa = {};
     };
 
     $scope.selecionaPessoa = function (pessoa) {
@@ -27,19 +26,16 @@ angular.module("crud").controller("controller", function ($scope, $http) {
 
     $scope.alterarPessoa = function () {
         var pessoa = $scope.pessoaSelecionado;
-
-        $http.put(`http://localhost:3000/pessoas/${pessoa.id}`,pessoa).success(function (data) {
-			$scope.pessoas = data;
+        pessoasAPI.alterarPessoa(pessoa).success(function (data) {
+            carregarPessoas();
 			});
-        listarPessoas();
     };
 
     $scope.excluirPessoa = function () {
         var pessoa = $scope.pessoaSelecionado;
-        $http.delete(`http://localhost:3000/pessoas/${pessoa.id}`,pessoa).success(function (data) {
-            listarPessoas();
+        pessoasAPI.excluir(pessoa).success(function (data) {
+            carregarPessoas();
 			});
-        $scope.pessoas.splice($scope.pessoas.indexOf($scope.pessoaSelecionado), 1);
     };
-    listarPessoas();
+    carregarPessoas();
 });
