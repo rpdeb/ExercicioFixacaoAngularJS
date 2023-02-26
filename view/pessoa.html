@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" ng-app="crud">
+<html lang="pt-br" ng-app="pessoa">
 
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body ng-controller="controller">
+<body ng-controller="pessoaController">
 
     <nav class="navbar navbar-inverse navbar-pessoa" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -243,7 +243,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-primary" ng-click="salvar()"
+                                    <button type="submit" class="btn btn-primary" ng-click="adicionarPessoa()"
                                         data-dismiss="modal">Salvar</button>
                                 </div>
                             </div>
