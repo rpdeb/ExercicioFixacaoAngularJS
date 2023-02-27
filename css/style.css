@@ -57,3 +57,9 @@ body {
     padding: 1% 0;
     border-bottom: solid 2px #f0eff6;
 }
+
+.mapa-inicio {
+    width: 80%;
+    height: 400;
+    border: 0;
+}
