@@ -8,7 +8,7 @@ body {
     border: 0px;
 }
 
-.titulo-modal-excluir{
+.titulo-modal-excluir {
     font-weight: bolder;
 }
 
@@ -52,7 +52,8 @@ body {
     align-items: center;
     text-align: center;
 }
-#footer .div-footer{
+
+#footer .div-footer {
     padding: 1% 0;
     border-bottom: solid 2px #f0eff6;
 }
