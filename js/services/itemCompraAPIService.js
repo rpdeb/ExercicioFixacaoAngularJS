@@ -1,18 +1,18 @@
-angular.module("itemCompra").factory("itensAPI", function ($http, config) {
+angular.module("itemCompra").factory("itensAPI", function ($http) {
 	var _buscar = function () {
-		return $http.get(config.baseUrl + "/itensdecompra");
+		return $http.get("http://localhost:3000/itensdecompra");
 	};
 
 	var _adicionar = function (item) {
-		return $http.post(config.baseUrl + "/itensdecompra", item);
+		return $http.post("http://localhost:3000/itensdecompra", item);
 	};
 
     var _alterar = function (item) {
-		return $http.put(config.baseUrl + `/itensdecompra/${item.id}`, item);
+		return $http.put(`http://localhost:3000/itensdecompra/${item.id}`, item);
 	};
 
     var _excluir = function (item) {
-		return $http.delete(config.baseUrl + `/itensdecompra/${item.id}`,item);
+		return $http.delete(`http://localhost:3000/itensdecompra/${item.id}`,item);
 	};
 
 	return {

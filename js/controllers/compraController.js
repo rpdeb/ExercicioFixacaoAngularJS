@@ -1,5 +1,5 @@
 angular.module("compra", []);
-angular.module("compra").controller("compraController", function ($scope, comprasAPI) {
+angular.module("compra").controller("compraController", function ($scope, comprasAPI, pessoasAPI) {
     $scope.novaCompra = {};
     $scope.compraSelecionada = {};
     $scope.compras = [];
@@ -8,7 +8,7 @@ angular.module("compra").controller("compraController", function ($scope, compra
     $scope.novaCompra.codigo = Math.floor(Math.random() * 1000);
 
     var carregarPessoas = function () {
-        $http.get("http://localhost:3000/pessoas").success(function (data) {
+        pessoasAPI.buscar().success(function (data) {
             $scope.pessoas = data;
         });
     };
