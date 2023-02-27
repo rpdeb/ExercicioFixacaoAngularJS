@@ -13,33 +13,7 @@
 </head>
 
 <body ng-controller="itemCompraController">
-
-    <nav class="navbar navbar-inverse" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">Início</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="compra.html">Compras</a></li>
-                <li><a href="itemCompra.html">Itens</a></li>
-                <li><a href="pessoa.html">Pessoas</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="pessoa.html" data-toggle="modal" data-target="#myModal">Cadastrar</a></li>
-            </ul>
-        </div>
-    </nav>
-
+    <div ng-include="'view/nav.html'"></div>
     <section>
         <div class="tituloTable">
             <h3>Listagem de Produtos</h3>
