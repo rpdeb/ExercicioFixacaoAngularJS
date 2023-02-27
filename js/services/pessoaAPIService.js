@@ -1,4 +1,4 @@
-angular.module("pessoaController").factory("pessoasAPI", function ($http, config) {
+angular.module("pessoa").factory("pessoasAPI", function ($http, config) {
 	var _buscar = function () {
 		return $http.get(config.baseUrl + "/pessoas");
 	};
@@ -12,7 +12,7 @@ angular.module("pessoaController").factory("pessoasAPI", function ($http, config
 	};
 
     var _excluir = function (pessoa) {
-		return $http.delete(config.baseUrl + `/pessoas/${pessoa.id}`);
+		return $http.delete(config.baseUrl + `/pessoas/${pessoa.id}`,pessoa);
 	};
 
 	return {
