@@ -1,5 +1,5 @@
 angular.module("pessoa", []);
-angular.module("pessoa").controller("pessoaController", function ($scope, $http) {
+angular.module("pessoa").controller("pessoaController", function ($scope, pessoasAPI) {
 
     $scope.novaPessoa = {};
     $scope.pessoaSelecionado = {};
@@ -15,9 +15,9 @@ angular.module("pessoa").controller("pessoaController", function ($scope, $http)
     $scope.adicionarPessoa = function () {
         var pessoa = $scope.novaPessoa;
         pessoa.nascimento = new Date();
-        pessoasAPI.adicionar(pessoa).success(function (data) {	
-        carregarPessoas();
-		});
+        pessoasAPI.adicionar(pessoa).success(function (data) {
+            carregarPessoas();
+        });
     };
 
     $scope.selecionaPessoa = function (pessoa) {
@@ -28,14 +28,14 @@ angular.module("pessoa").controller("pessoaController", function ($scope, $http)
         var pessoa = $scope.pessoaSelecionado;
         pessoasAPI.alterarPessoa(pessoa).success(function (data) {
             carregarPessoas();
-			});
+        });
     };
 
     $scope.excluirPessoa = function () {
         var pessoa = $scope.pessoaSelecionado;
         pessoasAPI.excluir(pessoa).success(function (data) {
             carregarPessoas();
-			});
+        });
     };
     carregarPessoas();
 });
