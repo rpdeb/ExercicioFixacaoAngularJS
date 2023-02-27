@@ -1,5 +1,5 @@
 angular.module("aplicacao", []);
-angular.module("aplicacao").controller("compraController", function ($scope, comprasAPI, pessoasAPI) {
+angular.module("aplicacao").controller("compraController", function ($scope, $http) {
     $scope.novaCompra = {};
     $scope.compraSelecionada = {};
     $scope.compras = [];
@@ -8,20 +8,20 @@ angular.module("aplicacao").controller("compraController", function ($scope, com
     $scope.novaCompra.codigo = Math.floor(Math.random() * 1000);
 
     var carregarPessoas = function () {
-        pessoasAPI.buscar().success(function (data) {
+        $http.get("http://localhost:3000/pessoas").success(function (data) {
             $scope.pessoas = data;
         });
     };
 
     var carregarCompras = function () {
-        comprasAPI.buscar().success(function (data) {
+        $http.get("http://localhost:3000/compras").success(function (data) {
             $scope.compras = data;
         });
     };
 
     $scope.adicionarCompra = function (compra) {
         var compra = $scope.novaCompra;
-        comprasAPI.adicionar(compra).success(function (data) {
+        $http.post("http://localhost:3000/compras", compra).success(function (data) {
             carregarCompras();
         });
     };
@@ -32,12 +32,11 @@ angular.module("aplicacao").controller("compraController", function ($scope, com
 
     $scope.excluirCompra = function () {
         var compra = $scope.compraSelecionada;
-        comprasAPI.excluir(compra).success(function (data) {
+        $http.delete(`http://localhost:3000/compras/${compra.id}`, compra).success(function (data) {
             carregarCompras();
         });
     };
 
     carregarCompras();
     carregarPessoas();
-    carregarItens();
 });
