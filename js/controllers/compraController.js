@@ -1,5 +1,5 @@
-angular.module("compra", []);
-angular.module("compra").controller("compraController", function ($scope, comprasAPI, pessoasAPI) {
+angular.module("aplicacao", []);
+angular.module("aplicacao").controller("compraController", function ($scope, comprasAPI, pessoasAPI) {
     $scope.novaCompra = {};
     $scope.compraSelecionada = {};
     $scope.compras = [];
@@ -21,7 +21,7 @@ angular.module("compra").controller("compraController", function ($scope, compra
 
     $scope.adicionarCompra = function (compra) {
         var compra = $scope.novaCompra;
-        comprasAPI.adicionar(compra) .success(function (data) {
+        comprasAPI.adicionar(compra).success(function (data) {
             carregarCompras();
         });
     };
