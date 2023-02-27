@@ -109,7 +109,6 @@
         },
         "id": 3
       },
-      "quantidade": 2,
       "codigo": 953,
       "id": 8
     },
@@ -148,31 +147,28 @@
       "id": 3,
       "codigo": "14752",
       "nome": "mochila de costas",
-      "valor": 547
+      "valor": 547,
+      "compra":{
+        "codigo":"14752"
+      }
     },
     {
       "codigo": 1218,
       "nome": "Squeeze 48",
       "valor": 100,
+      "compra":{
+        "codigo":"14752"
+      },
       "id": 6
     },
     {
       "codigo": 2128,
       "nome": "Squeeze 23",
       "valor": 100,
+      "compra":{
+        "codigo":"14752"
+      },
       "id": 7
-    },
-    {
-      "codigo": 5840,
-      "nome": "mala",
-      "valor": 122,
-      "id": 8
-    },
-    {
-      "codigo": 9845,
-      "nome": "bolsa de costas",
-      "valor": 189,
-      "id": 9
     }
   ]
 }
