@@ -8,18 +8,17 @@ body {
     border: 0px;
 }
 
-.icon-tbl {
-    padding: 0;
-    border: 0px;
+.titulo-modal-excluir{
+    font-weight: bolder;
 }
 
-.tituloTable {
+.tituloTabela {
     text-align: center;
     align-items: center;
     padding: 1%;
 }
 
-.banner-home {
+.banner-inicio {
     width: 100%;
 }
 
@@ -28,35 +27,16 @@ body {
     margin: 0;
 }
 
-.navbar-pessoa {
-    width: 100%;
-}
-
-/*footer */
-#rodape {
-    background-color: rgb(21, 25, 105);
-    color: white;
-    align-items: center;
-    text-align: center;
-    padding: 2%;
-    width: 100%;
-}
-
-#rodape .div-footer {
-    padding: 1% 0;
-    border-bottom: solid 2px #f0eff6;
-}
-
-.imagem-produtos-home {
+.imagem-produtos-inicio {
     border-radius: 1%;
 }
 
-.div-imagens-home {
+.div-imagens-inicio {
     padding: 1%;
     text-align: center;
 }
 
-.div-mapa-home {
+.div-mapa-inicio {
     text-align: center;
     align-items: center;
     padding: 1%;
