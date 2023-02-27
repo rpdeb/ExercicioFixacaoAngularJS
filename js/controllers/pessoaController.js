@@ -1,5 +1,5 @@
 angular.module("aplicacao", []);
-angular.module("aplicacao").controller("pessoaController", function ($scope, pessoasAPI) {
+angular.module("aplicacao").controller("pessoaController", function ($scope, $http) {
 
     $scope.novaPessoa = {};
     $scope.pessoaSelecionado = {};
@@ -7,7 +7,7 @@ angular.module("aplicacao").controller("pessoaController", function ($scope, pes
     $scope.novaPessoa.codigo = Math.floor(Math.random() * 1000);
 
     var carregarPessoas = function () {
-        pessoasAPI.buscar().success(function (data) {
+        $http.get("http://localhost:3000/pessoas").success(function (data) {
             $scope.pessoas = data;
         });
     };
@@ -15,7 +15,7 @@ angular.module("aplicacao").controller("pessoaController", function ($scope, pes
     $scope.adicionarPessoa = function () {
         var pessoa = $scope.novaPessoa;
         pessoa.nascimento = new Date();
-        pessoasAPI.adicionar(pessoa).success(function (data) {
+        $http.post("http://localhost:3000/pessoas", pessoa).success(function (data) {
             carregarPessoas();
         });
     };
@@ -26,14 +26,14 @@ angular.module("aplicacao").controller("pessoaController", function ($scope, pes
 
     $scope.alterarPessoa = function () {
         var pessoa = $scope.pessoaSelecionado;
-        pessoasAPI.alterarPessoa(pessoa).success(function (data) {
+        $http.put(`http://localhost:3000/pessoas/${pessoa.id}`, pessoa).success(function (data) {
             carregarPessoas();
         });
     };
 
     $scope.excluirPessoa = function () {
         var pessoa = $scope.pessoaSelecionado;
-        pessoasAPI.excluir(pessoa).success(function (data) {
+        $http.delete(`http://localhost:3000/pessoas/${pessoa.id}`, pessoa).success(function (data) {
             carregarPessoas();
         });
     };
