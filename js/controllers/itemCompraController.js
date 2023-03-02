@@ -4,11 +4,18 @@ angular.module("aplicacao").controller("itemCompraController", function ($scope,
     $scope.novoItem = {};
     $scope.itemSelecionado = {};
     $scope.itens = [];
+    $scope.compras = [];
     $scope.novoItem.codigo = Math.floor(Math.random() * 10000);
 
     var carregarItens = function () {
         $http.get("http://localhost:3000/itensdecompra").success(function (data) {
             $scope.itens = data;
+        });
+    };
+
+    var carregarCompras = function () {
+        $http.get("http://localhost:3000/compras").success(function (data) {
+            $scope.compras = data;
         });
     };
 
@@ -37,4 +44,5 @@ angular.module("aplicacao").controller("itemCompraController", function ($scope,
         });
     };
     carregarItens();
+    carregarCompras();
 });
