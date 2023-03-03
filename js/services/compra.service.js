@@ -11,7 +11,7 @@ angular.module("aplicacao").service("comprasAPI", function ($http) {
         return $http.put(`http://localhost:3000/compras/${compra.id}`, compra);
     }
 
-    this.excluir = function (){
+    this.excluir = function () {
         return $http.delete(`http://localhost:3000/compras/${compra.id}`, compra);
     }
 });
