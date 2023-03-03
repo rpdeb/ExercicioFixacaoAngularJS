@@ -1,5 +1,5 @@
 angular.module("aplicacao", []);
-angular.module("aplicacao").controller("compraController", function ($scope, $http) {
+angular.module("aplicacao").controller("compraController", function ($scope, $http, comprasAPI) {
     $scope.novaCompra = {};
     $scope.compraSelecionada = {};
     $scope.compras = [];
@@ -21,7 +21,7 @@ angular.module("aplicacao").controller("compraController", function ($scope, $ht
     };
 
     var buscarCompras = function () {
-        $http.get("http://localhost:3000/compras").success(function (data) {
+        comprasAPI.buscar().success(function (data) {
             $scope.compras = data;
         });
     };
