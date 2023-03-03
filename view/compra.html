@@ -74,6 +74,13 @@
                         <td>{{compra.pessoa.codigo}} {{compra.pessoa.nome}}</td>
                         <td>
                             <button type="button"
+                                class="btn btn-warning"
+                                data-toggle="modal"
+                                data-target="#myModalEditar"
+                                ng-click="selecionaItem(item)"><i class="glyphicon glyphicon-pencil"></i></button>
+                        </td>
+                        <td>
+                            <button type="button"
                                 class="btn btn-danger"
                                 data-toggle="modal"
                                 data-target="#myModalExcluir"
