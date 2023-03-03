@@ -11,6 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="../lib/angular/angular.js"></script>
     <script src="../js/controllers/pessoaController.js"></script>
+    <script src="../js/services/pessoa.service.js"></script>
     <link rel="stylesheet"
         href="../css/style.css">
 </head>
@@ -18,32 +19,33 @@
 <body ng-controller="pessoaController">
 
     <nav class="navbar navbar-inverse nav-menu"
-    role="navigation">
-    <div class="navbar-header">
-        <button type="button"
-            class="navbar-toggle"
-            data-toggle="collapse"
-            data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand"
-            href="index.html">Início</a>
-    </div>
-    <div class="collapse navbar-collapse"
-        id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li><a href="compra.html">Compras</a></li>
-            <li><a href="itemCompra.html">Itens</a></li>
-            <li><a href="pessoa.html">Pessoas</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a data-toggle="modal" data-target="#myModal">Cadastrar</a></li>
-        </ul>
-    </div>
-</nav>
+        role="navigation">
+        <div class="navbar-header">
+            <button type="button"
+                class="navbar-toggle"
+                data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"
+                href="index.html">Início</a>
+        </div>
+        <div class="collapse navbar-collapse"
+            id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="compra.html">Compras</a></li>
+                <li><a href="itemCompra.html">Itens</a></li>
+                <li><a href="pessoa.html">Pessoas</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a data-toggle="modal"
+                        data-target="#myModal">Cadastrar</a></li>
+            </ul>
+        </div>
+    </nav>
     <section id="bgd">
         <div class="tituloTabela">
             <h3> Listagem de Pessoas </h3>
@@ -296,7 +298,7 @@
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit"
                                         class="btn btn-primary"
-                                        ng-click="adicionarPessoa()"
+                                        ng-click="cadastrarPessoa()"
                                         data-dismiss="modal">Salvar</button>
                                 </div>
                             </div>
