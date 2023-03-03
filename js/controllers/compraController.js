@@ -6,23 +6,37 @@ angular.module("aplicacao").controller("compraController", function ($scope, $ht
     $scope.pessoas = [];
     $scope.novaCompra.valorTotal = 0;
     $scope.novaCompra.codigo = Math.floor(Math.random() * 1000);
+    $scope.itens = [];
 
-    var carregarPessoas = function () {
+    var buscarPessoas = function () {
         $http.get("http://localhost:3000/pessoas").success(function (data) {
             $scope.pessoas = data;
         });
     };
 
-    var carregarCompras = function () {
+    var buscarItens = function () {
+        $http.get("http://localhost:3000/itensdecompra").success(function (data) {
+            $scope.itens = data;
+        });
+    };
+
+    var buscarCompras = function () {
         $http.get("http://localhost:3000/compras").success(function (data) {
             $scope.compras = data;
         });
     };
 
-    $scope.adicionarCompra = function (compra) {
+    $scope.cadastrarCompra = function (compra) {
         var compra = $scope.novaCompra;
         $http.post("http://localhost:3000/compras", compra).success(function (data) {
-            carregarCompras();
+            buscarCompras();
+        });
+    };
+
+    $scope.alterarCompra = function () {
+        var compra = $scope.compraSelecionada;
+        $http.put(`http://localhost:3000/pessoas/${compra.id}`, compra).success(function (data) {
+            buscarCompras();
         });
     };
 
@@ -33,10 +47,11 @@ angular.module("aplicacao").controller("compraController", function ($scope, $ht
     $scope.excluirCompra = function () {
         var compra = $scope.compraSelecionada;
         $http.delete(`http://localhost:3000/compras/${compra.id}`, compra).success(function (data) {
-            carregarCompras();
+            buscarCompras();
         });
     };
 
-    carregarCompras();
-    carregarPessoas();
+    buscarCompras();
+    buscarPessoas();
+    buscarItens();
 });
