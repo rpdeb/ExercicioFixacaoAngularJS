@@ -43,6 +43,7 @@ angular.module("aplicacao").controller("itemCompraController", function ($scope,
             carregarItens();
         });
     };
+
     carregarItens();
     carregarCompras();
 });
