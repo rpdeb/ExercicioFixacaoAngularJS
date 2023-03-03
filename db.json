@@ -121,12 +121,6 @@
   ],
   "itensdecompra": [
     {
-      "id": 3,
-      "codigo": "14752",
-      "nome": "mochila de costas",
-      "valor": 547
-    },
-    {
       "codigo": 1218,
       "nome": "Squeeze 48",
       "valor": 100,
