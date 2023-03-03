@@ -1,5 +1,5 @@
 angular.module("aplicacao", []);
-angular.module("aplicacao").controller("compraController", function ($scope, $http, comprasAPI) {
+angular.module("aplicacao").controller("compraController", function ($scope, comprasAPI, itensAPI, pessoasAPI) {
     $scope.novaCompra = {};
     $scope.compraSelecionada = {};
     $scope.compras = [];
@@ -9,13 +9,13 @@ angular.module("aplicacao").controller("compraController", function ($scope, $ht
     $scope.itens = [];
 
     var buscarPessoas = function () {
-        $http.get("http://localhost:3000/pessoas").success(function (data) {
+        pessoasAPI.buscar().success(function (data) {
             $scope.pessoas = data;
         });
     };
 
     var buscarItens = function () {
-        $http.get("http://localhost:3000/itensdecompra").success(function (data) {
+        itensAPI.buscar().success(function (data) {
             $scope.itens = data;
         });
     };
@@ -28,14 +28,14 @@ angular.module("aplicacao").controller("compraController", function ($scope, $ht
 
     $scope.cadastrarCompra = function (compra) {
         var compra = $scope.novaCompra;
-        $http.post("http://localhost:3000/compras", compra).success(function (data) {
+        comprasAPI.cadastrarCompra(compra).success(function (data) {
             buscarCompras();
         });
     };
 
     $scope.alterarCompra = function () {
         var compra = $scope.compraSelecionada;
-        $http.put(`http://localhost:3000/pessoas/${compra.id}`, compra).success(function (data) {
+        comprasAPI.alterar(compra).success(function (data) {
             buscarCompras();
         });
     };
@@ -46,7 +46,7 @@ angular.module("aplicacao").controller("compraController", function ($scope, $ht
 
     $scope.excluirCompra = function () {
         var compra = $scope.compraSelecionada;
-        $http.delete(`http://localhost:3000/compras/${compra.id}`, compra).success(function (data) {
+        comprasAPI.excluir(compra).success(function (data) {
             buscarCompras();
         });
     };
