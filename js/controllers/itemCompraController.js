@@ -1,5 +1,5 @@
 angular.module("aplicacao", []);
-angular.module("aplicacao").controller("itemCompraController", function ($scope, $http) {
+angular.module("aplicacao").controller("itemCompraController", function ($scope, itensAPI) {
 
     $scope.novoItem = {};
     $scope.itemSelecionado = {};
@@ -7,14 +7,14 @@ angular.module("aplicacao").controller("itemCompraController", function ($scope,
     $scope.novoItem.codigo = Math.floor(Math.random() * 10000);
 
     var buscarItens = function () {
-        $http.get("http://localhost:3000/itensdecompra").success(function (data) {
+        itensAPI.buscar().success(function (data) {
             $scope.itens = data;
         });
     };
 
     $scope.cadastrarItem = function (item) {
         var item = $scope.novoItem;
-        $http.post("http://localhost:3000/itensdecompra", item).success(function (data) {
+        itensAPI.cadastrar(item).success(function (data) {
             buscarItens();
         });
     };
@@ -25,14 +25,14 @@ angular.module("aplicacao").controller("itemCompraController", function ($scope,
 
     $scope.alterarItem = function () {
         var item = $scope.itemSelecionado;
-        $http.put(`http://localhost:3000/itensdecompra/${item.id}`, item).success(function (data) {
+        itensAPI.alterar(item).success(function (data) {
             buscarItens();
         });
     };
 
     $scope.excluirItem = function () {
         var item = $scope.itemSelecionado;
-        $http.delete(`http://localhost:3000/itensdecompra/${item.id}`, item).success(function (data) {
+        itensAPI.excluir(item).success(function (data) {
             buscarItens();
         });
     };
