@@ -1,5 +1,5 @@
 angular.module("aplicacao", []);
-angular.module("aplicacao").controller("compraController", function ($scope, comprasAPI, itensAPI, pessoasAPI) {
+angular.module("aplicacao").controller("compraController", function ($scope, comprasAPI, $http) {
     $scope.novaCompra = {};
     $scope.compraSelecionada = {};
     $scope.compras = [];
@@ -9,13 +9,13 @@ angular.module("aplicacao").controller("compraController", function ($scope, com
     $scope.itens = [];
 
     var buscarPessoas = function () {
-        pessoasAPI.buscar().success(function (data) {
+        $http.get("http://localhost:3000/pessoas").success(function (data) {
             $scope.pessoas = data;
         });
     };
 
     var buscarItens = function () {
-        itensAPI.buscar().success(function (data) {
+        $http.get("http://localhost:3000/itensdecompra").success(function (data) {
             $scope.itens = data;
         });
     };
@@ -52,6 +52,6 @@ angular.module("aplicacao").controller("compraController", function ($scope, com
     };
 
     buscarCompras();
-    buscarPessoas();
     buscarItens();
+    buscarPessoas();
 });
