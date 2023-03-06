@@ -1,17 +1,17 @@
-angular.module("aplicacao").service("itensAPI", function ($http) {
+angular.module("aplicacao").service("itensAPI", function ($http, config) {
     this.buscar = function () {
-        return $http.get("http://localhost:3000/itensdecompra");
+        return $http.get(config.url + "/itensdecompra");
     };
 
     this.cadastrar = function () {
-        return $http.post("http://localhost:3000/itensdecompra", item);
+        return $http.post(config.url + "/itensdecompra", item);
     }
 
     this.alterar = function () {
-        return $http.put(`http://localhost:3000/itensdecompra/${item.id}`, item);
+        return $http.put(config.url + `/itensdecompra/${item.id}`, item);
     }
 
     this.excluir = function () {
-        return $http.delete(`http://localhost:3000/itensdecompra/${item.id}`, item);
+        return $http.delete(config.url + `/itensdecompra/${item.id}`, item);
     }
 });
