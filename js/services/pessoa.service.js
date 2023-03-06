@@ -1,17 +1,17 @@
-angular.module("aplicacao").service("pessoasAPI", function ($http) {
+angular.module("aplicacao").service("pessoasAPI", function ($http, config) {
     this.buscar = function () {
-        return $http.get("http://localhost:3000/pessoas");
+        return $http.get(config.url + "/pessoas");
     };
 
     this.cadastrar = function () {
-        return $http.post("http://localhost:3000/pessoas", pessoa);
+        return $http.post(config.url + "/pessoas", pessoa);
     }
 
     this.alterar = function () {
-        return $http.put(`http://localhost:3000/pessoas/${pessoa.id}`, pessoa);
+        return $http.put(config.url + `/pessoas/${pessoa.id}`, pessoa);
     }
 
-    this.excluir = function (){
-        return $http.delete(`http://localhost:3000/pessoas/${pessoa.id}`, pessoa);
+    this.excluir = function () {
+        return $http.delete(config.url + `/pessoas/${pessoa.id}`, pessoa);
     }
 });
