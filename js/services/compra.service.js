@@ -1,17 +1,17 @@
-angular.module("aplicacao").service("comprasAPI", function ($http) {
+angular.module("aplicacao").service("comprasAPI", function ($http, config) {
     this.buscar = function () {
-        return $http.get("http://localhost:3000/compras");
+        return $http.get(config.url + "/compras");
     };
 
     this.cadastrar = function () {
-        return $http.post("http://localhost:3000/compras", compra);
+        return $http.post(config.url + "/compras", compra);
     }
 
     this.alterar = function () {
-        return $http.put(`http://localhost:3000/compras/${compra.id}`, compra);
+        return $http.put(config.url + `/compras/${compra.id}`, compra);
     }
 
     this.excluir = function () {
-        return $http.delete(`http://localhost:3000/compras/${compra.id}`, compra);
+        return $http.delete(config.url + `/compras/${compra.id}`, compra);
     }
 });
