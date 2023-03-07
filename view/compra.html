@@ -1,239 +1,176 @@
-<!DOCTYPE html>
-<html lang="pt-br"
-    ng-app="aplicacao">
+<section id="bgd">
+    <div class="tituloTable">
+        <h3>Listagem de Compras</h3>
+        <input class="form-control"
+            type="text"
+            ng-model="filtroDeBusca"
+            placeholder="O que você está buscando?" />
+    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <title>CRUD com AngularJS</title>
-    <link rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="../lib/angular/angular.js"></script>
-    <script src="../js/controllers/compra.controller.js"></script>
-    <script src="../js/services/compra.service.js"></script>
-    <script src="../js/value/config-value.js"></script>
-    <script src="../lib/angular/angular-route.js"></script>
-    <script src="../js/config/route-config.js"></script>
-    <script src="../js/app.js"></script>
-    <link rel="stylesheet"
-        href="../css/style.css">
-</head>
+    <div>
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th class="th">Código</th>
+                    <th class="th">Valor Total</th>
+                    <th class="th">Pessoa</th>
+                </tr>
+            </thead>
 
-<body ng-controller="compraController">
-
-    <nav class="navbar navbar-inverse nav-menu"
-        role="navigation">
-        <div class="navbar-header">
-            <button type="button"
-                class="navbar-toggle"
-                data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand"
-                href="index.html">Início</a>
-        </div>
-        <div class="collapse navbar-collapse"
-            id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="compra.html">Compras</a></li>
-                <li><a href="item-compra.html">Itens</a></li>
-                <li><a href="pessoa.html">Pessoas</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="pessoa.html"
-                        data-toggle="modal"
-                        data-target="#myModal">Cadastrar</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section id="bgd">
-        <div class="tituloTable">
-            <h3>Listagem de Compras</h3>
-            <input class="form-control"
-                type="text"
-                ng-model="filtroDeBusca"
-                placeholder="O que você está buscando?" />
-        </div>
-
-        <div>
-            <table class="table table-hover">
-                <thead class="thead-light">
-                    <tr>
-                        <th class="th">Código</th>
-                        <th class="th">Valor Total</th>
-                        <th class="th">Pessoa</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr ng-repeat="compra in compras | filter:filtroDeBusca ">
-                        <td>{{compra.codigo}}</td>
-                        <td>{{compra.valorTotal}}</td>
-                        <td>{{compra.pessoa.codigo}} {{compra.pessoa.nome}}</td>
-                        <td>
-                            <button type="button"
-                                class="btn btn-warning"
-                                data-toggle="modal"
-                                data-target="#myModalEditar"
-                                ng-click="selecionaItem(item)"><i class="glyphicon glyphicon-pencil"></i></button>
-                        </td>
-                        <td>
-                            <button type="button"
-                                class="btn btn-danger"
-                                data-toggle="modal"
-                                data-target="#myModalExcluir"
-                                ng-click="selecionaCompra(compra)"><i class="glyphicon glyphicon-trash"></i></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="modal fade"
-            id="myModal"
-            role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
+            <tbody>
+                <tr ng-repeat="compra in compras | filter:filtroDeBusca ">
+                    <td>{{compra.codigo}}</td>
+                    <td>{{compra.valorTotal}}</td>
+                    <td>{{compra.pessoa.codigo}} {{compra.pessoa.nome}}</td>
+                    <td>
                         <button type="button"
-                            class="close"
-                            data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Novo Cadastro</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal"
-                            role="form">
-                            <div class="form-group">
-                                <label class="control-label col-sm-2">Pessoa</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control"
-                                        ng-model="novaCompra.pessoa"
-                                        ng-options="item.nome for item in pessoas"></select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-2">Item</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control"
-                                        ng-model="novaCompra.itemSelecionado"
-                                        ng-options="item.codigo for item in itens"></select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit"
-                                        class="btn btn-primary"
-                                        ng-click="cadastrarCompra()"
-                                        data-dismiss="modal">Salvar</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
+                            class="btn btn-warning"
+                            data-toggle="modal"
+                            data-target="#myModalEditar"
+                            ng-click="selecionaItem(item)"><i class="glyphicon glyphicon-pencil"></i></button>
+                    </td>
+                    <td>
                         <button type="button"
-                            class="btn btn-default"
-                            data-dismiss="modal">Fechar</button>
-                    </div>
+                            class="btn btn-danger"
+                            data-toggle="modal"
+                            data-target="#myModalExcluir"
+                            ng-click="selecionaCompra(compra)"><i class="glyphicon glyphicon-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade"
+        id="myModal"
+        role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button"
+                        class="close"
+                        data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Novo Cadastro</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal"
+                        role="form">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Pessoa</label>
+                            <div class="col-sm-10">
+                                <select class="form-control"
+                                    ng-model="novaCompra.pessoa"
+                                    ng-options="item.nome for item in pessoas"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Item</label>
+                            <div class="col-sm-10">
+                                <select class="form-control"
+                                    ng-model="novaCompra.itemSelecionado"
+                                    ng-options="item.codigo for item in itens"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit"
+                                    class="btn btn-primary"
+                                    ng-click="cadastrarCompra()"
+                                    data-dismiss="modal">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                        class="btn btn-default"
+                        data-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="modal fade"
-            id="myModalEditar"
-            role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button"
-                            class="close"
-                            data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Editar Cadastro</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal"
-                            role="form">
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-2">Nome</label>
-                                <div class="col-sm-10">
-                                    <input type="text"
-                                        class="form-control"
-                                        placeholder="Computador Dell ..."
-                                        ng-model="compraSelecionada.nome">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-2">Item</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control"
-                                        ng-model="compraSelecionada.itemSelecionado"
-                                        ng-options="item.codigo for item in itens"></select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit"
-                                        class="btn btn-primary"
-                                        ng-click="alterarCompra()"
-                                        data-dismiss="modal">Salvar</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button"
-                            class="btn btn-default"
-                            data-dismiss="modal">Fechar</button>
-                    </div>
+    <div class="modal fade"
+        id="myModalEditar"
+        role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button"
+                        class="close"
+                        data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Editar Cadastro</h4>
                 </div>
+                <div class="modal-body">
+                    <form class="form-horizontal"
+                        role="form">
 
-            </div>
-        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Nome</label>
+                            <div class="col-sm-10">
+                                <input type="text"
+                                    class="form-control"
+                                    placeholder="Computador Dell ..."
+                                    ng-model="compraSelecionada.nome">
+                            </div>
+                        </div>
 
-        <div class="modal fade"
-            id="myModalExcluir"
-            role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button"
-                            class="close"
-                            data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Você tem certeza?</h4>
-                    </div>
-                    <div class="modal-body">
-                        <h4 class="titulo-modal-excluir"> Você vai excluir a compra de {{compraSelecionada.pessoa.nome}}
-                        </h4>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button"
-                            class="btn btn-default"
-                            data-dismiss="modal"
-                            ng-click="excluirCompra()"
-                            data-dismiss="modal">Sim</button>
-                        <button type="button"
-                            class="btn btn-default"
-                            data-dismiss="modal">Não</button>
-                    </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Item</label>
+                            <div class="col-sm-10">
+                                <select class="form-control"
+                                    ng-model="compraSelecionada.itemSelecionado"
+                                    ng-options="item.codigo for item in itens"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit"
+                                    class="btn btn-primary"
+                                    ng-click="alterarCompra()"
+                                    data-dismiss="modal">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                        class="btn btn-default"
+                        data-dismiss="modal">Fechar</button>
                 </div>
             </div>
-        </div>
 
-    </section>
-    <footer id="footer">
-        <div class="div-footer">
-            <h5> &copy; Debora Ribeiro - 2023 </h5>
         </div>
-    </footer>
-</body>
+    </div>
 
-</html>
+    <div class="modal fade"
+        id="myModalExcluir"
+        role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button"
+                        class="close"
+                        data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Você tem certeza?</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="titulo-modal-excluir"> Você vai excluir a compra de {{compraSelecionada.pessoa.nome}}
+                    </h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                        class="btn btn-default"
+                        data-dismiss="modal"
+                        ng-click="excluirCompra()"
+                        data-dismiss="modal">Sim</button>
+                    <button type="button"
+                        class="btn btn-default"
+                        data-dismiss="modal">Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
