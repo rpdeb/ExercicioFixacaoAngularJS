@@ -1,4 +1,5 @@
 angular.module("aplicacao").config(function ($routeProvider) {
+
     $routeProvider.when("/pessoas", {
         templateUrl: "view/pessoa.html",
         controller: "pessoaController",
@@ -8,26 +9,30 @@ angular.module("aplicacao").config(function ($routeProvider) {
             }
         }
     });
-    // $routeProvider.when("/pessoa", {
-    // 	templateUrl: "view/novoContato.html",
-    // 	controller: "novoContatoCtrl",
-    // 	resolve: {
-    // 		operadoras: function (operadorasAPI) {
-    // 			return operadorasAPI.getOperadoras();
-    // 		}
-    // 	}
-    // });
-    // $routeProvider.when("/detalhesContato/:id", {
-    // 	templateUrl: "view/detalhesContato.html",
-    // 	controller: "detalhesContatoCtrl",
-    // 	resolve: {
-    // 		contato: function (contatosAPI, $route) {
-    // 			return contatosAPI.getContato($route.current.params.id);
-    // 		}
-    // 	}
-    // });
-    // $routeProvider.when("/error", {
-    // 	templateUrl: "view/error.html"
-    // });
+
+    $routeProvider.when("/itensdecompra", {
+        templateUrl: "view/item-compra.html",
+        controller: "itemCompraController",
+        resolve: {
+            itensdecompra: function (itensAPI) {
+                return itensAPI.buscar();
+            }
+        }
+    });
+
+    $routeProvider.when("/compras", {
+        templateUrl: "view/compra.html",
+        controller: "compraController",
+        resolve: {
+            compras: function (comprasAPI) {
+                return comprasAPI.buscar();
+            }
+        }
+    });
+
+    $routeProvider.when("/error", {
+        templateUrl: "view/error.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/pessoas" });
 });
