@@ -1,1 +1,1 @@
-angular.module("aplicacao", ["ngRoute"]);
+angular.module('aplicacao', ['ngRoute']);
