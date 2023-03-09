@@ -1,7 +1,7 @@
 angular.module("aplicacao").config(function ($routeProvider) {
 
-    $routeProvider.when("/pessoas", {
-        templateUrl: "view/pessoa.html",
+    $routeProvider.when("/pessoa", {
+        templateUrl: "../view/pessoa.html",
         controller: "pessoaController",
         resolve: {
             pessoas: function (pessoasAPI) {
@@ -10,8 +10,8 @@ angular.module("aplicacao").config(function ($routeProvider) {
         }
     });
 
-    $routeProvider.when("/itensdecompra", {
-        templateUrl: "view/item-compra.html",
+    $routeProvider.when("/item", {
+        templateUrl: "../view/item-compra.html",
         controller: "itemCompraController",
         resolve: {
             itensdecompra: function (itensAPI) {
@@ -20,8 +20,8 @@ angular.module("aplicacao").config(function ($routeProvider) {
         }
     });
 
-    $routeProvider.when("/compras", {
-        templateUrl: "view/compra.html",
+    $routeProvider.when("/compra", {
+        templateUrl: "../view/compra.html",
         controller: "compraController",
         resolve: {
             compras: function (comprasAPI) {
@@ -34,5 +34,5 @@ angular.module("aplicacao").config(function ($routeProvider) {
         templateUrl: "view/error.html"
     });
 
-    $routeProvider.otherwise({ redirectTo: "/pessoas" });
+    $routeProvider.otherwise({ redirectTo: "/pessoa" });
 });
