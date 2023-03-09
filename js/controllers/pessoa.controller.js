@@ -1,5 +1,4 @@
-angular.module("aplicacao", []);
-angular.module("aplicacao").controller("pessoaController", function ($scope, pessoasAPI) {
+angular.module("aplicacao").controller("pessoa", function ($scope, pessoasAPI) {
 
     $scope.novaPessoa = {};
     $scope.pessoaSelecionado = {};
