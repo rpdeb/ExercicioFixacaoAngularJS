@@ -12,9 +12,9 @@ angular.module('aplicacao').config(function ($routeProvider) {
             templateUrl: 'view/pessoa.html',
             controller: 'pessoa'
         })
-        // .when('/home', {
-        //     templateUrl: 'index.html',
-        // })
+        .when('/inicio', {
+            templateUrl: 'view/inicio.html',
+        })
         .otherwise({
             redirectTo: '/'
         });
