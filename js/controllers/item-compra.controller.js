@@ -1,5 +1,4 @@
-angular.module("aplicacao", []);
-angular.module("aplicacao").controller("itemCompraController", function ($scope, itensAPI) {
+angular.module("aplicacao").controller("item-compra", function ($scope, itensAPI) {
 
     $scope.novoItem = {};
     $scope.itemSelecionado = {};
