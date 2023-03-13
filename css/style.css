@@ -63,3 +63,15 @@ body {
     height: 400;
     border: 0;
 }
+
+.div-cadastro{
+display: inline-flex;
+}
+
+.input-pesquisa {
+    padding: 1%;
+}
+
+.div-button{
+    padding: 1%;
+}
