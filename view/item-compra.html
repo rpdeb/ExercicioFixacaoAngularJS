@@ -1,11 +1,19 @@
 <section>
     <div class="tituloTabela">
         <h3>Listagem de Produtos</h3>
-        <input class="form-control"
-            type="text"
-            ng-model="filtroDeBusca"
-            placeholder="O que você está buscando?"
-            class=" "/>
+        <div class="div-cadastro">
+            <div class="div-button">
+                <button><a href="pessoa.html"
+                        data-toggle="modal"
+                        data-target="#myModal">Cadastrar</a></button>
+            </div>
+            <div class="input-pesquisa">
+                <input class="form-control"
+                    type="text"
+                    ng-model="filtroDeBusca"
+                    placeholder="O que você está buscando?" />
+            </div>
+        </div>
     </div>
 
     <div>
